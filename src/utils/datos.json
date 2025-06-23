@@ -1,0 +1,14 @@
+{
+    "DiasSemanaPicoyplaca" :[
+    {"lunes":[5, 6]},
+    {"martes":[7, 8]},
+    {"miercoles":[9,0]},
+    {"jueves":[1, 2]},
+    {"viernes":[3, 4]}
+    ],
+    
+    "Valores":{
+        "dia":25000,
+        "mes":462747
+    }
+}

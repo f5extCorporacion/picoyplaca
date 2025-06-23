@@ -1,0 +1,37 @@
+
+/*meses del año */
+/*
+se deben mostrar todos los meses solo que 
+si el mes actual es entre (enero y junio) solo se puedan seleccionar esos meses  O
+si el mes actual esta entre (junio y diciembre) solo se puedan seleccionar esos meses*/
+
+/*Adicional que solo muestre dede el dea */
+const monthNames = [
+    {"mes":"Ene",valor:200}, 
+    {"mes":"Feb",valor:200}, 
+    {"mes":"Mar",valor:200}, 
+    {"mes":"Abr",valor:200},  
+    {"mes":"May",valor:200}, 
+    {"mes":"Jun",valor:200}, 
+    {"mes":"Jul",valor:200}, 
+    {"mes":"Ago",valor:200}, 
+    {"mes":"Sep",valor:200}, 
+    {"mes":"Oct",valor:200}, 
+    {"mes":"Nov",valor:200}, 
+    {"mes":"Dic",valor:200}, 
+];
+
+/*cuando la persona seleccione  un mes de los que se pueden seleccionar 
+apareca un modal con sweealer 2 que tenga la 2 opciones
+meses o dias*/
+
+/*Si la persona selecciona el mes debes guardar el mes que selecciono en una variable y poner le un valor de 200 y mostrar eso en un total a pagar */
+
+/*dias pico y placa */
+const picoyplaca= [
+    {"lunes": [9, 0]},
+    {"martes": [1, 2]},
+    {"miercoles": [3, 4]},
+    {"jueves": [5, 6]},
+    {"viernes": [7, 8]}
+];

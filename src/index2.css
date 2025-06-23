@@ -1,0 +1,686 @@
+/* code*/
+body {
+    font-family: sans-serif;
+    background: #fffdfd;
+    padding: 50px;
+}
+
+.swal2-radio .r1{
+    border: solid 1px #cfcfcf ;
+    padding: 5px;
+    border-radius: 10px;
+    color: rgb(26, 26, 26);
+}
+/*Calendar seleccted*/
+/* Estilo para días ya seleccionados (en otros meses) */
+.calendar-day.already-selected {
+    background-color: #5cee08; /* Azul claro */
+    color: #333;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.calendar-day.already-selected::after {
+    content: "✓";
+    position: absolute;
+    top: 2px;
+    background-color: #5cee08; 
+    border-radius: 20px;
+    right: 2px;
+    font-size: 12px;
+    color: #0056b3;
+}
+/*fin selected*/
+/*Nueva funcion de mostrar cantidad en los meses*/
+/* Estilo para el check de mes completo */
+.mes-completo-badge {
+    margin-left: 6px;
+    color: #52c41a;
+    
+}
+
+/* Mejora el estilo de los botones de mes */
+/* Estilos para los badges de meses */
+.month-button {
+  position: relative;
+  padding: 8px 15px;
+  margin: 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/*slect days hover opction*/
+.month-button.selected-with-days {
+  background-color: #757575;
+  border-color: #1890ff;
+}
+
+.month-button.selected-month {
+  background-color: #8a8a8a;
+  border-color: #52c41a;
+  color: #52c41a;
+}
+
+.month-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.month-button.selected-with-days::after {
+  content: attr(data-dias);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #1890ff;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.mes-completo-badge {
+  margin-left: 5px;
+  color: #52c41a;
+}
+/*###############################################*/
+/*Style meses seleccionados*/
+/* Estilo para meses y días ya seleccionados */
+.month-button.selected-month, 
+.calendar-day.already-selected {
+    background-color: transparent; /* Azul claro */
+   border:solid 1px #000;
+    color: #333;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.month-button.selected-month::after,
+.calendar-day.already-selected::after {
+    content: "✓";
+    position: absolute;
+    top: 2px;
+    border-radius: 20px;
+    background-color: #5cee08;
+    right: 2px;
+    font-size: 15px;
+    color: #0056b3;
+}
+
+/* Opcional: estilo para cuando se pasa el mouse */
+.month-button.selected-month:hover {
+    background-color: #348edd;
+    transform: none;
+    box-shadow: none;
+}
+/*############################################*/
+form {
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 900px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.selectedMonthsBadgeContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 17px;
+    color: black;
+}
+.form-group,
+.form-group-small {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-group-small {
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 250px;
+}
+
+.form-row-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.document-phone-row .form-group-small {
+    min-width: 120px;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.document-phone-row #dv-group {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+}
+
+/* ESTILO GENERAL DE LABEL - NO DEBE AFECTAR AL MODAL */
+label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 14px;
+    padding: 0 5px;
+    z-index: 1;
+    background: white;
+    color: black;
+    pointer-events: none; /* Esto causa el problema en el modal si no se sobrescribe */
+    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+.preciomodal{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    text-decoration: none;
+}
+
+.preciomodal ul li {
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+.preciomodal ul li p{
+  font-size: 12px;
+}
+.preciomodal ul li span{
+  font-size: 20px;
+  color: rgb(7, 179, 15);
+}
+.form-control {
+    width: 100%;
+    padding: 14px 12px;
+    border: 2px solid #d3d2d2;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: 1s;
+      height: 56px;
+}
+.form-control:hover {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1.2px solid #5c5c5c;
+    border-radius: 5px;
+    font-size: 16px;
+  
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+textarea.form-control {
+    min-height: 80px;
+    resize: vertical;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: auto;
+}
+
+button:hover {
+    background: #333;
+}
+
+.required::after {
+    content: '*';
+    color: red;
+    margin-left: 3px;
+}
+
+.form-control.filled {
+    border-color: #4CAF50 !important;
+    background-color: #e6ffe6 !important;
+}
+
+/* Estilos del Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* SOBRESCRIBIENDO ESTILOS DE LABEL PARA CHECKBOXES DEL MODAL */
+.modal-checkbox-group label {
+    position: relative; /* Cambiado a relative o static */
+    top: unset;
+    left: unset;
+    font-size: 18px;
+    color: #555;
+    background: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    pointer-events: auto; /* IMPORTANTE: Habilitar eventos de puntero */
+}
+
+.modal-checkbox-group label:hover {
+    color: #000;
+}
+
+.modal-checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: rgb(82, 82, 82);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+.modal-close-button:hover {
+    color: #333;
+}
+
+/* Estilos del Calendario */
+.calendar-container {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+/* Agrega esto a tu archivo CSS */
+.fullcalendar-container {
+    margin-top: 20px;
+}
+
+.fc-day-disabled {
+    background-color: #f5f5f5;
+    color: #ccc;
+    pointer-events: none;
+}
+
+.fc-day-not-allowed {
+    background-color: #fff3f3;
+    color: #ffb3b3;
+    pointer-events: none;
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+.calendar-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.btn-confirmar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-confirmar:hover {
+    background-color: #45a049;
+}
+.calendar-day-name {
+  font-weight: bold;
+  text-align: center;
+}
+.error-message{
+    color: red;
+}
+.calendar-day {
+  background-color: #f0f0f0;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+/*Select dia calendario*/
+.calendar-day.selected {
+  background-color: #4caf50;
+  color: white;
+}
+/*###############RESTRICCCION ##################*/
+
+/*########################################*/
+.calendar-day.disabled {
+  background-color: #ddd;
+  color: #888;
+  pointer-events: none;
+}
+
+.calendar-day.empty {
+  visibility: hidden;
+}
+
+
+.total-selected-days {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007bff;
+}
+.calendar-day-name{
+    background: #d6d5d5;
+}
+/* Estilos para los botones de meses */
+.month-buttons-container {
+    display: flex;
+    gap: 1px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center; /* Centrar los botones */
+    flex-wrap: wrap; /* Permitir que los botones pasen a la siguiente línea */
+}
+
+.month-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Hacerlos circulares */
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 60px; /* Ancho mínimo */
+    text-align: center;
+}
+
+.month-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+.swal2-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.swal2-radio label {
+  cursor: pointer;
+  font-size: 16px;
+}
+.month-button.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7; /* Para que se vea más gris */
+    box-shadow: none;
+    transform: none;
+}
+.month-button.disabled:hover {
+    background-color: #ccc; /* No cambiar al hacer hover */
+    color: #666;
+    transform: none;
+}
+/*selec carrito compra*/
+.selected-months-badge {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 25px 8px 15px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.eliminar-item {
+  position: absolute;
+  right: -7px;
+  top: -14px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 5px;
+  border: solid 1px;
+}
+
+.eliminar-item:hover {
+  color: #cc0000;
+}
+
+/*nueva sintaxis de  forumulario 4*/
+/* Estilos para el calendario compacto */
+/* Contenedor principal de meses */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.months-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 900px;
+}
+
+.month-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.month-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.month-button.selected-month {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.month-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.calendar-container {
+    width: 100%;
+}
+
+.days-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+}
+
+.day-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.day-row:hover {
+    background: #f0f0f0;
+}
+
+.day-row.selected {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.day-name {
+    opacity: 0.8;
+}
+
+.day-number {
+    font-weight: bold;
+}
+
+.selection-summary {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.total-amount {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.selected-item {
+    padding: 0.3rem 0.6rem;
+    background: #e3f2fd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+ /*########################formulario 4 fin*/
+
+@media (max-width: 768px) {
+    .form-row-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    .form-group-small {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+    .document-phone-row .form-group-small,
+    .document-phone-row #dv-group {
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+    }
+    .months-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}

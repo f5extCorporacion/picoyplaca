@@ -1,0 +1,99 @@
+body {
+  background-color: #f8f9fa;
+}
+
+
+.container-mes:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+/* ######################## Estilo glass */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: black;
+}
+
+/* Estilo animado del label al enfocar el input */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  transform: translateY(-0.8rem) scale(0.85);
+  opacity: 1;
+  color: #5b5e61; /* Color azul Bootstrap */
+}
+
+.form-floating > label {
+  transition: all 0.3s ease;
+  padding-left: 2rem; /* espacio para el icono */
+  opacity: 0.7;
+  background: none;
+  color: rgb(58, 57, 57);
+}
+
+/* ################ fin Estilo glass */
+
+.selected-month {
+  background-color: #e6ffe6; /* Light green for selected month container */
+  border-color: #28a745;
+}
+
+.selected-day {
+  background-color: #28a745; /* Green for selected day button */
+  color: white;
+  border-color: #28a745;
+  width: 39px;
+  height: 41x;
+  padding: 1px;
+}
+
+.greyed-out {
+  opacity: 0.6;
+  background-color: #e9ecef;
+  pointer-events: none; /* Disable interaction */
+}
+
+.greyed-out-button {
+  background-color: #6c757d; /* Darker grey for disabled buttons */
+  color: white;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Floating Cart Icon */
+.floating-cart-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.floating-cart-icon:hover {
+  background-color: #0056b3;
+}
+
+.floating-cart-icon .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.8em;
+}
+.agrega{
+  display: flex;
+}
+.agrega .cart2{
+  position: relative;
+  left: -20px;
+}
