@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import 'atropos/css'
 import Formulario5 from "./formulario5";
-import Formulario1 from './formulario1';
 import { handleLoginMrx } from './api/picoYPlacaApi';
 
  const AuthContext = createContext();
