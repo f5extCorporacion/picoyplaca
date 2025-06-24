@@ -18,8 +18,6 @@ const AuthProvider = ({ children }) => {
     // Simulación de login: reemplaza con tu fetch real
     if (success === 'OK') {
       setUser({estado:success});
-      speechSynthesis.speak(new SpeechSynthesisUtterance("Bienvenido al sistema"));
-
       return true;
     }else{
        return false;
@@ -88,6 +86,7 @@ const Login = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.identificacion}
+           
           />
           <label htmlFor="identificacion">
             <FiUser className="" /> Identificación
